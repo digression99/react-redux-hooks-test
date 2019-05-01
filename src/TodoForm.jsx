@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import uuidv4 from 'uuid/v4';
 
-export default ({ addTodo }) => {
+export default () => {
     const [title, setTitle] = useState('');
+    const dispatch = useDispatch();
 
     const onFormSubmit = () => {
-        console.log('title is : ', title);
-        addTodo({ id : uuidv4(), title });
+        const newTodo = {
+            id : uuidv4(),
+            title
+        };
+
+        dispatch({ type : 'ADD_TODO', payload : newTodo });
         setTitle('');
     };
 

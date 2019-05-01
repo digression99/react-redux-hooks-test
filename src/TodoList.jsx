@@ -1,7 +1,9 @@
 import React from 'react';
 import Todo from './Todo';
+import { useSelector } from 'react-redux';
 
-export default ({ list }) => {
+export default () => {
+    const list = useSelector(state => state);
 
     if (list.length < 1) return null;
 
